@@ -33,29 +33,6 @@ def process_data(XYZarray2):
 	
 	return P
 
-
-def filter_parameters(xc, yc, zc, radius):
-	fil_in = xc
-	fil_out = -0.014
-	fil_gain = 0.05
-	xc = fil_gain*fil_in + (1 - fil_gain)*fil_out
-	
-	fil_in = yc
-	fil_out = -0.017
-	fil_gain = 0.05
-	yc = fil_gain*fil_in + (1 - fil_gain)*fil_out
-	
-	fil_in = zc
-	fil_out = 0.475
-	fil_gain = 0.05
-	zc = fil_gain*fil_in + (1 - fil_gain)*fil_out
-	
-	fil_in = radius
-	fil_out = 0.05
-	fil_gain = 0.05
-	radius = fil_gain*fil_in + (1 - fil_gain)*fil_out
-	
-	return SphereParams(xc, yc, zc, radius)
 		
 
 
@@ -69,6 +46,23 @@ if __name__ == '__main__':
 
 	# Set the loop frequency
 	rate = rospy.Rate(10)
+	
+	
+	fil_outxc = -0.014
+	fil_gainxc = 0.05
+	
+	
+	fil_outyc = -0.017
+	fil_gainyc = 0.05
+	
+	
+	fil_outzc = 0.475
+	fil_gainzc = 0.05
+	
+	
+	fil_outrad = 0.05
+	fil_gainrad = 0.05
+	
 	
 	while not rospy.is_shutdown():	
 		# Exception handling to avoid empty/null data
@@ -84,14 +78,21 @@ if __name__ == '__main__':
 		
 		# Collect P and determine xc, yc and zc from it
 		P = np.array(P)
-		xc = P[0]
-		yc = P[1]
-		zc = P[2]
+		fil_inxc = P[0]
+		fil_inyc = P[1]
+		fil_inzc = P[2]
 		# Uses np array P to calculate the radius of the ball
-		radius = math.sqrt(P[3] + xc**2 + yc**2 + zc**2)
+		fil_inrad = math.sqrt(P[3] + fil_inxc**2 + fil_inyc**2 + fil_inzc**2)
+		
+		# Perform calculations of the filter
+		fil_outxc = fil_gainxc*fil_inxc + (1 - fil_gainxc)*fil_outxc
+		fil_outyc = fil_gainyc*fil_inyc + (1 - fil_gainyc)*fil_outyc
+		fil_outzc = fil_gainzc*fil_inzc + (1 - fil_gainzc)*fil_outzc
+		fil_outrad = fil_gainrad*fil_inrad + (1 - fil_gainrad)*fil_outrad
+		
 		
 		# Filter the parameters
-		sphere_params = filter_parameters(xc, yc, zc, radius)
+		sphere_params = SphereParams(fil_outxc, fil_outyc, fil_outzc, fil_outrad)
 		
 		# Set up variable to publish, publish the data
 		print(sphere_params.xc, sphere_params.yc, sphere_params.zc, sphere_params.radius)
