@@ -33,76 +33,61 @@ if __name__ == '__main__':
 	
 	
 	
-
-	# define a plan variable
+	# move robot to a spot where it is above the ball
 	plan = Plan()
 	plan_point1 = Twist()
-	# just a quick solution to send two target points
-	# define a point close to the initial position
 	plan_point1.linear.x = -0.068
 	plan_point1.linear.y = -0.669
 	plan_point1.linear.z = 0.41
 	plan_point1.angular.x = 3.01
 	plan_point1.angular.y = 0.06
 	plan_point1.angular.z = 2.822
-	# add this point to the plan
 	plan.points.append(plan_point1)
 	
 	plan_point2 = Twist()
-	# define where to robot picks up item
 	plan_point2.linear.x = sphere_params.xc + 0.005
 	plan_point2.linear.y = sphere_params.yc - 0.465
 	plan_point2.linear.z = sphere_params.zc - 0.4633
 	plan_point2.angular.x = 2.319
 	plan_point2.angular.y = 0.041
 	plan_point2.angular.z = 2.786
-	# add this point to the plan
 	plan.points.append(plan_point2)
 	
 	plan_point11 = Twist()
-	# just a quick solution to send two target points
-	# define a point close to the initial position
 	plan_point11.linear.x = -0.068
 	plan_point11.linear.y = -0.669
 	plan_point11.linear.z = 0.41
 	plan_point11.angular.x = 3.01
 	plan_point11.angular.y = 0.06
 	plan_point11.angular.z = 2.822
-	# add this point to the plan
 	plan.points.append(plan_point11)
 	
 	plan_point3 = Twist()
-	# define where robot lifts item to
 	plan_point3.linear.x = -0.449
 	plan_point3.linear.y = -0.501
 	plan_point3.linear.z = 0.412
 	plan_point3.angular.x = 3.015
 	plan_point3.angular.y = 0.06
 	plan_point3.angular.z = 2.19
-	# add this point to the plan
 	plan.points.append(plan_point3)
 
 	plan_point4 = Twist()
-	# define where robot places item
 	plan_point4.linear.x = -0.455
 	plan_point4.linear.y = -0.505
 	plan_point4.linear.z = 0.057
 	plan_point4.angular.x = 3.01
 	plan_point4.angular.y = 0.06
 	plan_point4.angular.z = 2.19
-	# add this point to the plan
 	plan.points.append(plan_point4)
 	
 	
 	plan_point31 = Twist()
-	# define where robot lifts item to
 	plan_point31.linear.x = -0.449
 	plan_point31.linear.y = -0.501
 	plan_point31.linear.z = 0.412
 	plan_point31.angular.x = 3.015
 	plan_point31.angular.y = 0.06
 	plan_point31.angular.z = 2.19
-	# add this point to the plan
 	plan.points.append(plan_point31)
 	
 
