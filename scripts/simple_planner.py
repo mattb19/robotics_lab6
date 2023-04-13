@@ -15,9 +15,9 @@ from geometry_msgs.msg import Twist
 sphere_params = SphereParams()
 
 def get_params(SphereParams2):
+    # get the sphere params from the subscriber
 	global sphere_params
 	sphere_params = SphereParams2
-	print(sphere_params.xc, sphere_params.yc, sphere_params.zc)
 
 
 if __name__ == '__main__':
@@ -44,6 +44,7 @@ if __name__ == '__main__':
 	plan_point1.angular.z = 2.822
 	plan.points.append(plan_point1)
 	
+	# gather the XYZ coords of the balls center, adjust them to be consistent with the robot and move it there
 	plan_point2 = Twist()
 	plan_point2.linear.x = sphere_params.xc + 0.005
 	plan_point2.linear.y = sphere_params.yc - 0.465
@@ -53,6 +54,7 @@ if __name__ == '__main__':
 	plan_point2.angular.z = 2.786
 	plan.points.append(plan_point2)
 	
+	# move the robot back above the ball
 	plan_point11 = Twist()
 	plan_point11.linear.x = -0.068
 	plan_point11.linear.y = -0.669
@@ -62,6 +64,7 @@ if __name__ == '__main__':
 	plan_point11.angular.z = 2.822
 	plan.points.append(plan_point11)
 	
+	# move the robot holding the ball to a new location
 	plan_point3 = Twist()
 	plan_point3.linear.x = -0.449
 	plan_point3.linear.y = -0.501
@@ -71,6 +74,7 @@ if __name__ == '__main__':
 	plan_point3.angular.z = 2.19
 	plan.points.append(plan_point3)
 
+	# put the ball down in new location 
 	plan_point4 = Twist()
 	plan_point4.linear.x = -0.455
 	plan_point4.linear.y = -0.505
@@ -80,7 +84,7 @@ if __name__ == '__main__':
 	plan_point4.angular.z = 2.19
 	plan.points.append(plan_point4)
 	
-	
+	# pick arm back up and return to start
 	plan_point31 = Twist()
 	plan_point31.linear.x = -0.449
 	plan_point31.linear.y = -0.501
@@ -95,7 +99,10 @@ if __name__ == '__main__':
 	
 	
 	while not rospy.is_shutdown():
-		# publish the plan
-		plan_pub.publish(plan)
+		if sphere_params.xc > -0.02 and sphere_params.xc < 0.01:
+			if sphere_params.yc > -0.025 and sphere_params.xc < 0.01:
+				if sphere_params.zc > 0.46 and sphere_params.zc < 0.485:
+					plan_pub.publish(plan)
+
 		# wait for 0.1 seconds until the next loop and repeat
 		loop_rate.sleep()

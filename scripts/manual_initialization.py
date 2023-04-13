@@ -33,14 +33,10 @@ if __name__ == '__main__':
 		pos_cmd_point.positions.append(0.0)
 	# set the ideal time to destination
 	pos_cmd_point.time_from_start = rospy.Duration(1.0) # here one second 
-	# just change the value of the command for the second joint
 	pos_cmd_point.positions[1] = -1.26
-	# just change the value of the command for the elbow joint
 	pos_cmd_point.positions[0] = 1.13
 	pos_cmd_point.positions[2] = 1.26
-	# change wrist 1
 	pos_cmd_point.positions[3] = 4.78
-	# change wrist 2
 	pos_cmd_point.positions[4] = -1.51
 	pos_cmd_point.positions[5] = 0.00
 	# add the trajectory point to the command
