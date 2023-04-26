@@ -86,13 +86,22 @@ if __name__ == '__main__':
 	
 	
 		plan = Plan()
+		plan_point0 = Twist()
+		plan_point0.linear.x = -0.0166
+		plan_point0.linear.y = -0.406
+		plan_point0.linear.z = 0.429
+		plan_point0.angular.x = 3.126
+		plan_point0.angular.y = 0.016
+		plan_point0.angular.z = 1.530
+		plan.points.append(plan_point0)
+		
 		plan_point1 = Twist()
-		plan_point1.linear.x = -0.0166
-		plan_point1.linear.y = -0.406
-		plan_point1.linear.z = 0.429
-		plan_point1.angular.x = 3.126
-		plan_point1.angular.y = 0.016
-		plan_point1.angular.z = 1.530
+		plan_point1.linear.x = -0.068
+		plan_point1.linear.y = -0.669
+		plan_point1.linear.z = 0.41
+		plan_point1.angular.x = 3.01
+		plan_point1.angular.y = 3.07
+		plan_point1.angular.z = 2.82
 		plan.points.append(plan_point1)
 		
 		# gather the XYZ coords of the balls center, adjust them to be consistent with the robot and move it there
