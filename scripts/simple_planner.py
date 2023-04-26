@@ -86,6 +86,15 @@ if __name__ == '__main__':
 	
 	
 		plan = Plan()
+		plan_point0 = Twist()
+		plan_point0.linear.x = -0.0166
+		plan_point0.linear.y = -0.406
+		plan_point0.linear.z = 0.429
+		plan_point0.angular.x = 3.126
+		plan_point0.angular.y = 0.016
+		plan_point0.angular.z = 1.530
+		plan.points.append(plan_point0)
+		
 		plan_point1 = Twist()
 		plan_point1.linear.x = -0.068
 		plan_point1.linear.y = -0.669
