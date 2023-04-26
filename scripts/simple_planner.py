@@ -117,9 +117,9 @@ if __name__ == '__main__':
 		
 		# move the robot back above the ball
 		plan_point11 = Twist()
-		plan_point11.linear.x = -0.068
-		plan_point11.linear.y = -0.669
-		plan_point11.linear.z = 0.41
+		plan_point11.linear.x = -0.0166
+		plan_point11.linear.y = -0.406
+		plan_point11.linear.z = 0.429
 		plan_point11.angular.x = 3.126
 		plan_point11.angular.y = 0.016
 		plan_point11.angular.z = 1.530
