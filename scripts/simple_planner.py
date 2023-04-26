@@ -84,7 +84,7 @@ if __name__ == '__main__':
 	
 	
 	
-	
+		# manual init
 		plan = Plan()
 		plan_point0 = Twist()
 		plan_point0.linear.x = -0.0166
@@ -95,23 +95,24 @@ if __name__ == '__main__':
 		plan_point0.angular.z = 1.530
 		plan.points.append(plan_point0)
 		
-		plan_point1 = Twist()
-		plan_point1.linear.x = -0.068
-		plan_point1.linear.y = -0.669
-		plan_point1.linear.z = 0.41
-		plan_point1.angular.x = 3.01
-		plan_point1.angular.y = 3.07
-		plan_point1.angular.z = 2.82
-		plan.points.append(plan_point1)
+# 		# position 1
+# 		plan_point1 = Twist()
+# 		plan_point1.linear.x = -0.068
+# 		plan_point1.linear.y = -0.669
+# 		plan_point1.linear.z = 0.41
+# 		plan_point1.angular.x = 3.01
+# 		plan_point1.angular.y = 3.07
+# 		plan_point1.angular.z = 2.82
+# 		plan.points.append(plan_point1)
 		
 		# gather the XYZ coords of the balls center, adjust them to be consistent with the robot and move it there
 		plan_point2 = Twist()
 		plan_point2.linear.x = x
 		plan_point2.linear.y = y
 		plan_point2.linear.z = z
-		plan_point2.angular.x = 2.319
-		plan_point2.angular.y = 0.041
-		plan_point2.angular.z = 2.786
+		plan_point2.angular.x = 3.11
+		plan_point2.angular.y = 0.056
+		plan_point2.angular.z = 1.53
 		plan.points.append(plan_point2)
 		
 		# move the robot back above the ball
@@ -119,9 +120,9 @@ if __name__ == '__main__':
 		plan_point11.linear.x = -0.068
 		plan_point11.linear.y = -0.669
 		plan_point11.linear.z = 0.41
-		plan_point11.angular.x = 3.01
-		plan_point11.angular.y = 0.06
-		plan_point11.angular.z = 2.822
+		plan_point11.angular.x = 3.126
+		plan_point11.angular.y = 0.016
+		plan_point11.angular.z = 1.530
 		plan.points.append(plan_point11)
 		
 		# move the robot holding the ball to a new location
@@ -129,9 +130,9 @@ if __name__ == '__main__':
 		plan_point3.linear.x = -0.449
 		plan_point3.linear.y = -0.501
 		plan_point3.linear.z = 0.412
-		plan_point3.angular.x = 3.015
-		plan_point3.angular.y = 0.06
-		plan_point3.angular.z = 2.19
+		plan_point3.angular.x = 3.126
+		plan_point3.angular.y = 0.016
+		plan_point3.angular.z = 1.530
 		plan.points.append(plan_point3)
 	
 		# put the ball down in new location 
@@ -139,9 +140,9 @@ if __name__ == '__main__':
 		plan_point4.linear.x = -0.455
 		plan_point4.linear.y = -0.505
 		plan_point4.linear.z = 0.057
-		plan_point4.angular.x = 3.01
-		plan_point4.angular.y = 0.06
-		plan_point4.angular.z = 2.19
+		plan_point4.angular.x = 3.126
+		plan_point4.angular.y = 0.016
+		plan_point4.angular.z = 1.530
 		plan.points.append(plan_point4)
 		
 		# pick arm back up and return to start
@@ -149,9 +150,9 @@ if __name__ == '__main__':
 		plan_point31.linear.x = -0.449
 		plan_point31.linear.y = -0.501
 		plan_point31.linear.z = 0.412
-		plan_point31.angular.x = 3.015
-		plan_point31.angular.y = 0.06
-		plan_point31.angular.z = 2.19
+		plan_point31.angular.x = 3.126
+		plan_point31.angular.y = 0.016
+		plan_point31.angular.z = 1.530
 		plan.points.append(plan_point31)
 		
 		
